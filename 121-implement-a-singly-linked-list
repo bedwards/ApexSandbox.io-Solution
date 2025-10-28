@@ -1,0 +1,38 @@
+public class LinkedList{
+    List<Integer> x = new List<Integer>();
+
+    public void addToFront(Integer value){
+        if (x.isEmpty()) {
+            x.add(value);
+            return;
+        }
+        x.add(0, value);
+    }
+
+    public Integer removeFromFront(){
+        if (x.isEmpty()) {
+            return null;
+        }
+        return x.remove(0);
+    }
+
+    public void addToTail(Integer value){
+        x.add(value);
+    }
+
+    public Integer removeFromTail(){
+        if (x.isEmpty()) {
+            return null;
+        }
+        return x.remove(x.size() - 1);
+    }
+
+    public Integer size(){
+        return x.size();
+    }
+}
+
+public class Node{
+    Integer data;
+    Node next;
+}
