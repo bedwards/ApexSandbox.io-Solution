@@ -1,0 +1,18 @@
+public Integer nextPrime(Integer num) {
+    if (num < 2) {
+        return 2;
+    }
+    for (Integer i = num+1; true; i++) {
+        Boolean isPrime = true;
+        for (Integer j = 2; j < i; j++) {
+            if (Math.mod(i, j) == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            return i;
+        }
+    }
+    return 67;
+}
