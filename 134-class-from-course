@@ -1,0 +1,14 @@
+public Id classFromCourse(String courseName) {
+    List<apxio__Course__c> aa = [
+        select Id, Name from apxio__Course__c where Name = :courseName limit 1
+    ];
+    if (aa.isEmpty()) {
+        return null;
+    }
+    apxio__Course__c a = aa.get(0);
+    apxio__Class__c b = new apxio__Class__c();
+    b.Name = a.Name;
+    b.apxio__Course__c = a.Id;
+    insert b;
+    return b.Id;
+}
