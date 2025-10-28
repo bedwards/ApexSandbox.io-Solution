@@ -1,0 +1,12 @@
+public String aOrAn(String word) {
+    Set<String> vowels = new Set<String>();
+    vowels.add('a');
+    vowels.add('e');
+    vowels.add('i');
+    vowels.add('o');
+    vowels.add('u');
+    if (vowels.contains(word.substring(0, 1).toLowerCase())) {
+        return 'an ' + word;
+    }
+    return 'a ' + word;
+}
