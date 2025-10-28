@@ -1,0 +1,13 @@
+public Integer fibonacci(Integer n) {
+    if (n < 3) {
+        return 1;
+    }
+    Integer left = 1;
+    Integer right = 1;
+    for (Integer i = 3; i <= n; i++) {
+        Integer tmp = left + right;
+        left = right;
+        right = tmp;
+    }
+    return right;
+}
