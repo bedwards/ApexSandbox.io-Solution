@@ -1,0 +1,26 @@
+public void enrollStudents(List<String> emails, String className) {
+
+    List<apxio__Student__c> students = [
+        select Id, apxio__Email__c from apxio__Student__c
+        where apxio__Email__c in :emails];
+    if (students.isEmpty()) {
+        return;
+    }
+
+    List<apxio__Class__c> courses = [
+        select Id, Name from apxio__Class__c
+        where Name = :className];
+    if (courses.isEmpty()) {
+        return;
+    }
+    apxio__Class__c course = courses.get(0);
+
+    List<apxio__Class_Enrollment__c> cc = new List<apxio__Class_Enrollment__c>();
+    for (Integer i = 0; i < students.size(); i++) {
+        apxio__Class_Enrollment__c c = new apxio__Class_Enrollment__c();
+        c.apxio__Student__c = students.get(i).Id;
+        c.apxio__Offered_Class__c = course.Id;
+        cc.add(c);
+    }
+    insert cc;
+}
