@@ -1,0 +1,12 @@
+public String registerStudent(String name, String phone, String email) {
+    apxio__Student__c a = new apxio__Student__c();
+    a.Name = name;
+    a.apxio__Phone__c = phone;
+    a.apxio__Email__c = email;
+    insert a;
+    String id = a.Id;
+    apxio__Student__c b = [
+        SELECT apxio__Registration_Number__c FROM apxio__Student__c WHERE Id = :id LIMIT 1];
+
+    return b.apxio__Registration_Number__c;
+}
